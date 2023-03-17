@@ -9,6 +9,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import Dropdown from "../reusable/Dropdown";
+import Search from "../reusable/Search";
 
 const json = require("../../utils/result.json"); //(with path)
 
@@ -52,24 +54,7 @@ export default function Barchart() {
 
   return (
     <div className="container">
-      <div className="input-group w-50 my-3 mx-auto">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Gsheet ID"
-          onChange={handleOnChange}
-          value={text}
-        />
-        <button
-          className="btn btn-success"
-          type="button"
-          id="button-addon2"
-          onClick={() => handleOnClick()}
-        >
-          Fetch Now
-        </button>
-      </div>
-      
+      <Search handleOnChange={handleOnChange} handleText={text} handleClick={() => handleOnClick()}></Search>
       <div className="my-10">
         <ResponsiveContainer width="100%" height={400}>
           <BarChart
@@ -90,48 +75,8 @@ export default function Barchart() {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      
-
-      <div className="d-flex flex-row justify-content-center">
-        {columnData != null && (
-          <div className="dropdown p-2">
-            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              X-Axis
-            </button>
-            <ul className="dropdown-menu">
-              {columnData.map((c) => {
-                return (
-                  <li key={c}>
-                    <a onClick={() => onXClickHandler(c)} className="dropdown-item">
-                      {c}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
-        {columnData != null && (
-          <div className="dropdown p-2">
-            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Y-Axis
-            </button>
-            {columnData != null && (
-              <ul className="dropdown-menu">
-                {columnData.map((c) => {
-                  return (
-                    <li key={c}>
-                      <a onClick={() => onYClickHandler(c)} className="dropdown-item">
-                        {c}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
-        )}
-      </div>
+      <Dropdown dropdownData={columnData} dropDownSelectionHandler={onXClickHandler} ></Dropdown>
+      <Dropdown dropdownData={columnData} dropDownSelectionHandler={onYClickHandler} ></Dropdown>
     </div>
   );
 }
