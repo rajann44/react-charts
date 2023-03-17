@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router';
-import Navbar from './components/commoncomp/Navbar';
+import Navbar from './components/reusable/Navbar';
 import Barchart from './components/funtionality/Barchart';
 import Linechart from './components/funtionality/Linechart';
 import Fileupload from './components/funtionality/FileUpload';
