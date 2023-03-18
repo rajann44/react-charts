@@ -46,8 +46,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/bar2">
-                Bar2
+              <Link className="nav-link" aria-current="page" to="/custom">
+                Custom Chart
               </Link>
             </li>
           </ul>

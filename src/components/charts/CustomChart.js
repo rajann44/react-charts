@@ -6,7 +6,7 @@ import Search from "../reusable/Search";
 
 let parsedData;
 
-const CustomBarChart = ({}) => {
+const CustomChart = ({}) => {
 
   const chartType = {
     bar:
@@ -78,4 +78,4 @@ const CustomBarChart = ({}) => {
   );
 };
 
-export default CustomBarChart;
+export default CustomChart;
