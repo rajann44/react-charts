@@ -45,6 +45,11 @@ export default function Navbar() {
                 File
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/bar2">
+                Bar2
+              </Link>
+            </li>
           </ul>
           <form className="d-flex" role="search">
             <input

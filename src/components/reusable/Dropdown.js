@@ -1,11 +1,11 @@
-const Dropdown = ({dropdownData, dropDownSelectionHandler}) => {
+const Dropdown = ({dropdownData, dropDownSelectionHandler, value}) => {
 
     return(
         <div className="d-flex flex-row justify-content-center">
         {dropdownData != null && (
           <div className="dropdown p-2">
             <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              X-Axis
+              {value}
             </button>
             <ul className="dropdown-menu">
               {dropdownData.map((c) => {
