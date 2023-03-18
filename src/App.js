@@ -5,6 +5,7 @@ import Barchart from './components/funtionality/Barchart';
 import Linechart from './components/funtionality/Linechart';
 import Fileupload from './components/funtionality/FileUpload';
 import CustomChart from './components/charts/CustomChart';
+import GridRender from './components/analyzer/gridRender';
 
 function App() {
   return (<>
@@ -15,6 +16,7 @@ function App() {
       <Route path="/line" element={<Linechart></Linechart>} />
       <Route path="/file" element={<Fileupload></Fileupload>} />
       <Route path="/custom" element={<CustomChart></CustomChart>} />
+      <Route path="/analyzer" element={<GridRender></GridRender>} />
     </Routes>
     </>
   );

@@ -6,10 +6,14 @@ export default function Fileupload(){
     console.log('Effect')
   });
 
+  const handleFileSelected = (e) => {
+    console.log('Change')
+  }
+
     return(<div className="container">
         <div className="mb-3">
             <label htmlFor="formFile" className="form-label">Default file input example</label>
-            <input className="form-control" type="file" id="formFile" />
+            <input className="form-control" type="file" id="formFile" onChange={handleFileSelected}/>
         </div>
         </div>
         );

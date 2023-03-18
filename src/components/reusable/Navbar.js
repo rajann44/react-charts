@@ -50,6 +50,11 @@ export default function Navbar() {
                 Custom Chart
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/analyzer">
+                Analyzer
+              </Link>
+            </li>
           </ul>
           <form className="d-flex" role="search">
             <input
