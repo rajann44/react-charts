@@ -1,20 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from "react";
+import CSV_Parser from "../../utils/csvparser";
 
-export default function Fileupload(){
+export default function Fileupload({selectedFile}) {
+  let sheetHeader;
 
   useEffect(() => {
-    console.log('Effect')
+    console.log("Effect in Fileupload");
   });
 
-  const handleFileSelected = (e) => {
-    console.log('Change')
+  async function handleFileSelectedDontRun(e) {
+    const sheetHead = await CSV_Parser.toJson(e.target.files[0]);
+    console.log(sheetHead);
+    console.log(Object.keys(sheetHead[0]));
+    sheetHeader = Object.keys(sheetHead[0]);
+    sheetHeader.forEach((element) => {
+      console.log(element);
+    });
   }
 
-    return(<div className="container">
-        <div className="mb-3">
-            <label htmlFor="formFile" className="form-label">Default file input example</label>
-            <input className="form-control" type="file" id="formFile" onChange={handleFileSelected}/>
-        </div>
-        </div>
-        );
+  return (
+    <div className="container">
+      <div className="mb-3">
+        <label htmlFor="formFile" className="form-label">
+          Select .csv File
+        </label>
+        <input
+          className="form-control"
+          type="file"
+          id="formFile"
+          onChange={(e) => selectedFile(e)}
+        />
+      </div>
+    </div>
+  );
 }

@@ -44,6 +44,7 @@ const CustomChart = ({}) => {
     let sheetURL = `https://opensheet.elk.sh/${spreadsheet_id}/1`;
     let sheetResponse = await fetch(sheetURL);
     parsedData = await sheetResponse.json();
+    console.log(parsedData)
     setcolumnData(Object.keys(parsedData[0]));
   }
 
@@ -61,7 +62,7 @@ const CustomChart = ({}) => {
       parsedData={parsedData} 
       xAxisValue={xAxisValue} 
       yAxisValue={yAxisValue}
-      radio={radio}
+      selectedChart={radio}
       ></CommonChart>
       </div>
       <Dropdown

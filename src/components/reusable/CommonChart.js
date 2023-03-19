@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Bar,
   BarChart,
@@ -11,11 +12,19 @@ import {
   Line,
 } from "recharts";
 
-const CommonChart = ({ parsedData, xAxisValue, yAxisValue, radio }) => {
+const CommonChart = ({ parsedData, xAxisValue, yAxisValue, selectedChart }) => {
+
+  useEffect(() => {
+    console.log('INSIDE COMMON CHART')
+    console.log({parsedData})
+    console.log({xAxisValue})
+    console.log({yAxisValue})
+    console.log({selectedChart})
+  });
 
   return (
     <>
-      { radio === "Bar Chart" && 
+      { selectedChart === "Bar Chart" && 
         <ResponsiveContainer width="100%" height={400}>
           <BarChart
             data={parsedData}
@@ -36,7 +45,7 @@ const CommonChart = ({ parsedData, xAxisValue, yAxisValue, radio }) => {
         </ResponsiveContainer>
       }
       <div className="my-10">
-        { radio  === "Line Chart" && 
+        { selectedChart  === "Line Chart" && 
           <ResponsiveContainer width="100%" height={400}>
             <LineChart
               data={parsedData}
