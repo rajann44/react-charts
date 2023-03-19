@@ -62,7 +62,7 @@ export default function GridRender() {
   };
 
   return (
-    <div className="container text-center my-5">
+    <div className="text-center my-5">
       <div className="row">
         <div className="col border-end border-4">
           <Fileupload selectedFile={handleFileSelected} />
