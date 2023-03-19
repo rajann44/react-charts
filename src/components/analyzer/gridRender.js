@@ -8,21 +8,24 @@ import Dropdown from "../reusable/Dropdown";
 import CommonChart from "../reusable/CommonChart";
 
 export default function GridRender() {
-  let sheetData=null;
-  const [columnList, setColumnList] = useState([]);
+  
+  const [columnName, setColumnName] = useState([]);
+  const [columnData, setColumnData] = useState([]);
+
   const [xAxisValue, setXAxisValue] = useState();
   const [yAxisValue, setYAxisValue] = useState();
 
   useEffect(() => {
-    console.log('Grid Render Effect Sheet Header: '+columnList)
-  }, [columnList]);
+    console.log('Grid Render Effect Sheet Header: '+columnName)
+  }, [columnName], [columnData]);
 
   //async function handleFileSelected(e) {
   const handleFileSelected = async (e) => {
     console.log("*************************")
-    sheetData = await CSV_Parser.toJson(e.target.files[0]);
+    let sheetData = await CSV_Parser.toJson(e.target.files[0]);
     console.log(sheetData);
-    setColumnList(Object.keys(sheetData[0]));
+    setColumnData(sheetData)
+    setColumnName(Object.keys(sheetData[0]));
     console.log("*************************")
   };
 
@@ -31,7 +34,7 @@ export default function GridRender() {
       <div className="row">
         <div className="col border-end border-4">
           <Fileupload selectedFile={handleFileSelected} />
-          <Dimensions columnValues={columnList} />
+          <Dimensions columnValues={columnName} />
         </div>
 
         <div className="col-8">
@@ -39,20 +42,20 @@ export default function GridRender() {
             <div className="col">
               <Dropdown
                 value="X-Axis"
-                dropdownData={columnList}
+                dropdownData={columnName}
                 dropDownSelectionHandler={setXAxisValue}
               ></Dropdown>
             </div>
             <div className="col">
               <Dropdown
                 value="Y-Axis"
-                dropdownData={columnList}
+                dropdownData={columnName}
                 dropDownSelectionHandler={setYAxisValue}
               ></Dropdown>
             </div>
           </div>
           <CommonChart
-      parsedData={sheetData} 
+      parsedData={columnData} 
       xAxisValue={xAxisValue} 
       yAxisValue={yAxisValue}
       selectedChart="Line Chart"
