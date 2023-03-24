@@ -15,6 +15,21 @@ class CSV_Parser {
     });
   }
 
+  getFileName(file) {
+    return new Promise((resolve, reject) => {
+      Papa.parse(file, {
+        header: true,
+        complete: function (results, file) {
+          console.log("Parsing complete:", file.name);
+          return file.name;
+        },
+        error(err, file) {
+          reject(err);
+        },
+      });
+    });
+  }
+
   toJsonNoPromise = (file) => {
     Papa.parse(file, {
       header: true,
