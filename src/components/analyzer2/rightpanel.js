@@ -1,3 +1,5 @@
+import css from "./css/leftpanel.module.css";
+
 export default function RightPanel() {
-  return <div>Right Panel</div>;
+  return <div className={`${css.panel_head}`}>Chart Types</div>;
 }

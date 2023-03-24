@@ -29,8 +29,13 @@ export default function LeftPanel({ setChartData }) {
   }
 
   return (
-    <div>
-      <Fileupload selectedFile={handleFileSelected} title="DATA" />
+    <div className={`list-group ${leftcss.column}`}>
+      <Fileupload
+        selectedFile={handleFileSelected}
+        title="DATA"
+        design={leftcss.panel_head}
+      />
+      <span className={`list-group ${leftcss.panel_head}`}>DIMENSIONS</span>
       <div>
         <ul className={`list-group ${leftcss.columnlist}`}>
           {columnName.map((column, id) => (

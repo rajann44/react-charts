@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CommonChart from "../reusable/CommonChart";
-import leftcss from "./css/leftpanel.module.css";
+import css from "./css/midpanel.module.css";
 
 export default function Midpanel({ showChartData }) {
   const [dropAreaColumnX, setDropAreaColumnX] = useState();
@@ -32,18 +32,18 @@ export default function Midpanel({ showChartData }) {
   }
 
   return (
-    <div className="row">
+    <div className={`row`}>
       <div
         className="col"
         onDragEnter={handleOnDragEnter}
         onDrop={handleOnDropForX}
         onDragOver={handleOnDragOver}
       >
-        Select X-Axis
-        {dropAreaColumnX !== undefined && (
-          <div className={`x-axis ${leftcss.columnlist}`}>
-            {dropAreaColumnX}
-          </div>
+        <span className={`x-axis-text`}>X-Axis:</span>
+        {dropAreaColumnX === undefined ? (
+          <div className={`x-axis ${css.axis}`}></div>
+        ) : (
+          <div className={`x-axis ${css.axis}`}>{dropAreaColumnX}</div>
         )}
       </div>
       <div
@@ -52,11 +52,11 @@ export default function Midpanel({ showChartData }) {
         onDrop={handleOnDropForY}
         onDragOver={handleOnDragOver}
       >
-        Select Y-Axis
-        {dropAreaColumnY !== undefined && (
-          <div className={`y-axis ${leftcss.columnlist}`}>
-            {dropAreaColumnY}
-          </div>
+        <span className={`y-axis-text`}>Y-Axis:</span>
+        {dropAreaColumnY === undefined ? (
+          <div className={`y-axis ${css.axis}`}></div>
+        ) : (
+          <div className={`y-axis ${css.axis}`}>{dropAreaColumnY}</div>
         )}
       </div>
       <CommonChart

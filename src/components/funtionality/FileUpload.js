@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import CSV_Parser from "../../utils/csvparser";
 
-export default function Fileupload({ selectedFile, title }) {
+export default function Fileupload({ selectedFile, title, design }) {
   let sheetHeader;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Fileupload({ selectedFile, title }) {
   return (
     <div className="container">
       <div className="mb-3">
-        <label htmlFor="formFile" className="form-label">
+        <label htmlFor="formFile" className={`form-label ${design}`}>
           {title}
         </label>
         <input

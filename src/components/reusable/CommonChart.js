@@ -17,18 +17,17 @@ import {
 } from "recharts";
 
 const CommonChart = ({ parsedData, xAxisValue, yAxisValue, selectedChart }) => {
-
   useEffect(() => {
-    console.log('INSIDE COMMON CHART')
-    console.log({parsedData})
-    console.log({xAxisValue})
-    console.log({yAxisValue})
-    console.log({selectedChart})
+    console.log("INSIDE COMMON CHART");
+    console.log({ parsedData });
+    console.log({ xAxisValue });
+    console.log({ yAxisValue });
+    console.log({ selectedChart });
   });
 
   return (
-    <>
-      { selectedChart === "Bar Chart" && 
+    <div className="chart" style={{ marginTop: "25px", marginBottom: "10px" }}>
+      {selectedChart === "Bar Chart" && (
         <ResponsiveContainer width="100%" height={400}>
           <BarChart
             data={parsedData}
@@ -47,9 +46,9 @@ const CommonChart = ({ parsedData, xAxisValue, yAxisValue, selectedChart }) => {
             <Bar dataKey={yAxisValue} fill="#82ca9d" />
           </BarChart>
         </ResponsiveContainer>
-      }
+      )}
       <div className="my-10">
-        { selectedChart  === "Line Chart" && 
+        {selectedChart === "Line Chart" && (
           <ResponsiveContainer width="100%" height={400}>
             <LineChart
               data={parsedData}
@@ -75,50 +74,52 @@ const CommonChart = ({ parsedData, xAxisValue, yAxisValue, selectedChart }) => {
               />
             </LineChart>
           </ResponsiveContainer>
-        }
-        { selectedChart === "Area Chart" && 
-        <ResponsiveContainer width="100%" height={400}>
-          <AreaChart
-            width={500}
-            height={400}
-            data={parsedData}
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey={xAxisValue} />
-            <YAxis />
-            <Tooltip />
-            <Area dataKey={yAxisValue} type="monotone"  stroke="#8884d8" fill="#8884d8" />
-          </AreaChart>
-        </ResponsiveContainer>
-      }
-      { selectedChart === "Pie Chart" && 
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart
-            width={500}
-            height={400}
-          >
-            <Pie
-            dataKey={yAxisValue}
-            startAngle={180}
-            endAngle={0}
-            data={parsedData}
-            cx="50%"
-            cy="50%"
-            outerRadius={80}
-            fill="#8884d8"
-            label
-            />
-          </PieChart>
-        </ResponsiveContainer>
-      }
+        )}
+        {selectedChart === "Area Chart" && (
+          <ResponsiveContainer width="100%" height={400}>
+            <AreaChart
+              width={500}
+              height={400}
+              data={parsedData}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey={xAxisValue} />
+              <YAxis />
+              <Tooltip />
+              <Area
+                dataKey={yAxisValue}
+                type="monotone"
+                stroke="#8884d8"
+                fill="#8884d8"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        )}
+        {selectedChart === "Pie Chart" && (
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart width={500} height={400}>
+              <Pie
+                dataKey={yAxisValue}
+                startAngle={180}
+                endAngle={0}
+                data={parsedData}
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                fill="#8884d8"
+                label
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
