@@ -1,0 +1,7 @@
+.axis {
+  background-color: #e8f3fc;
+  text-align: center;
+  width: 200px;
+  height: 40px;
+  cursor: grab;
+}
