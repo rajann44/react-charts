@@ -3,7 +3,7 @@ import Fileupload from "../funtionality/FileUpload";
 import CSV_Parser from "../../utils/csvparser";
 import leftcss from "./css/leftpanel.module.css";
 
-export default function LeftPanel() {
+export default function LeftPanel({ setChartData }) {
   const [columnName, setColumnName] = useState([]);
 
   const handleFileSelected = async (event) => {
@@ -11,6 +11,7 @@ export default function LeftPanel() {
     let sheetData = await CSV_Parser.toJson(event.target.files[0]);
     console.log(sheetData);
     setColumnName(Object.keys(sheetData[0]));
+    setChartData(sheetData);
   };
 
   function handleDragStart(event) {

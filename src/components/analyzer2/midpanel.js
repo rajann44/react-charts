@@ -1,7 +1,8 @@
 import { useState } from "react";
+import CommonChart from "../reusable/CommonChart";
 import leftcss from "./css/leftpanel.module.css";
 
-export default function Midpanel() {
+export default function Midpanel({ showChartData }) {
   const [dropAreaColumnX, setDropAreaColumnX] = useState();
   const [dropAreaColumnY, setDropAreaColumnY] = useState();
 
@@ -58,6 +59,12 @@ export default function Midpanel() {
           </div>
         )}
       </div>
+      <CommonChart
+        parsedData={showChartData}
+        xAxisValue={dropAreaColumnX}
+        yAxisValue={dropAreaColumnY}
+        selectedChart="Bar Chart"
+      ></CommonChart>
     </div>
   );
 }
