@@ -55,6 +55,11 @@ export default function Navbar() {
                 Analyzer
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/analyzer2">
+                Analyzer 2.0
+              </Link>
+            </li>
           </ul>
           <form className="d-flex" role="search">
             <input

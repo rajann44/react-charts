@@ -7,27 +7,18 @@ import Dropdown from "../reusable/Dropdown";
 import CommonChart from "../reusable/CommonChart";
 
 export default function GridRender() {
-
   const chartType = {
-    bar:
-      "Bar Chart",
-    line:
-      "Line Chart",
-    area:
-      "Area Chart",
-    pie:
-      "Pie Chart",
+    bar: "Bar Chart",
+    line: "Line Chart",
+    area: "Area Chart",
+    pie: "Pie Chart",
   };
 
   const chartImage = {
-    bar:
-      "-336px -408px",
-    line:
-      "-420px -360px",
-    area:
-      "-210px -168px",
-    pie:
-      "-336px -336px",
+    bar: "-336px -408px",
+    line: "-420px -360px",
+    area: "-210px -168px",
+    pie: "-336px -336px",
   };
 
   const [columnName, setColumnName] = useState([]);
@@ -48,7 +39,7 @@ export default function GridRender() {
 
   function chartSelected(value) {
     setChart(value);
-    console.log("Selected Chart: "+value)
+    console.log("Selected Chart: " + value);
   }
 
   //async function handleFileSelected(e) {
@@ -65,7 +56,10 @@ export default function GridRender() {
     <div className="text-center my-5">
       <div className="row">
         <div className="col border-end border-4">
-          <Fileupload selectedFile={handleFileSelected} />
+          <Fileupload
+            selectedFile={handleFileSelected}
+            title="Select .CSV file"
+          />
           <Dimensions columnValues={columnName} />
         </div>
 
@@ -94,10 +88,26 @@ export default function GridRender() {
           ></CommonChart>
         </div>
         <div className="col border-start border-4">
-          <ChartType whichChart={chartType.bar} whichImage={chartImage.bar} chartClick={() => chartSelected(chartType.bar)}/>
-          <ChartType whichChart={chartType.line} whichImage={chartImage.line} chartClick={() => chartSelected(chartType.line)}/>
-          <ChartType whichChart={chartType.area} whichImage={chartImage.area} chartClick={() => chartSelected(chartType.area)}/>
-          <ChartType whichChart={chartType.pie} whichImage={chartImage.pie} chartClick={() => chartSelected(chartType.pie)}/>
+          <ChartType
+            whichChart={chartType.bar}
+            whichImage={chartImage.bar}
+            chartClick={() => chartSelected(chartType.bar)}
+          />
+          <ChartType
+            whichChart={chartType.line}
+            whichImage={chartImage.line}
+            chartClick={() => chartSelected(chartType.line)}
+          />
+          <ChartType
+            whichChart={chartType.area}
+            whichImage={chartImage.area}
+            chartClick={() => chartSelected(chartType.area)}
+          />
+          <ChartType
+            whichChart={chartType.pie}
+            whichImage={chartImage.pie}
+            chartClick={() => chartSelected(chartType.pie)}
+          />
         </div>
       </div>
     </div>

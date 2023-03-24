@@ -1,0 +1,7 @@
+.columnlist {
+  border: 3px solid #666;
+  background-color: #ddd;
+  border-radius: 0.2em;
+  padding: 3px;
+  cursor: move;
+}
